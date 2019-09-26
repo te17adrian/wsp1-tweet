@@ -7,6 +7,9 @@ $sth = $dbh->prepare('SELECT tweet.*, users.name FROM tweet
             ORDER BY updated_at DESC');
 $sth->execute();
 
+
+$title = "Tweet Home";
+
 $result = $sth->fetchAll(PDO::FETCH_ASSOC);
 include 'views/index_layout.php';
 ?>

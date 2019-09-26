@@ -1,17 +1,18 @@
   
 <?php
 
-$tweetId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+$userId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
 include 'include/dbinfo.php';
 include 'include/db.php';
-$sth = $dbh->prepare('SELECT tweet.*, users.name FROM tweet
-            JOIN users
-            ON tweet.user_id = users.id
-            WHERE tweet.id =' . $tweetId);
+$sth = $dbh->prepare('SELECT * FROM users
+            WHERE id =' . $userId);
 $sth->execute();
 
 $result = $sth->fetch(PDO::FETCH_ASSOC);
-include 'views/tweet_layout.php';
+
+$title = "Profile for " . $result['name'];
+
+include 'views/user_layout.php';
 
 ?>

@@ -1,8 +1,10 @@
 <?php include 'head.php' ?>
 <body>
+    <?php include 'navbar.php'?>
     <div class="container px-5">
     <?php foreach ($result as $row): ?>
         <section class="card mt-2">
+        <a href="user.php?id=<?= $row['id'] ?>">
             <header class="card-header d-flex align-items-center">
             <img class="img-thumbnail" src="https://robohash.org/<?= $row['name'] ?>?set=set2" alt="pfp">
                 <h5 class="card-title pl-4 mb-0">
